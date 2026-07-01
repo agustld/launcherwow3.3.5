@@ -1,0 +1,39 @@
+/**
+ * Tokens de color extraídos de la referencia Battle.net / WotLK.
+ * Base tomada de la paleta del launcher oficial con ajustes mínimos.
+ */
+:root {
+  --void: #070b12;
+  --frost-deep: #0d1521;
+  --frost-panel: #101a28;
+  --frost-panel-soft: rgba(16, 26, 40, 0.82);
+  --frost-line: #1d2a3c;
+  --frost-line-soft: rgba(29, 42, 60, 0.65);
+
+  --ice: #6fd3ff;
+  --ice-soft: #9fe2ff;
+  --ice-dim: #2e5a72;
+  --ice-glow: rgba(111, 211, 255, 0.22);
+
+  --play-blue: #0074e0;
+  --play-blue-hover: #0088ff;
+  --play-blue-active: #0062c4;
+
+  --snow: #e9f2f8;
+  --ash: #6f7d8e;
+  --ash-dim: #4a5666;
+
+  --success: #3ecf8e;
+  --success-dim: rgba(62, 207, 142, 0.15);
+  --danger: #e05a5a;
+
+  --radius-window: 16px;
+  --radius-panel: 12px;
+  --radius-btn: 9px;
+
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+
+  --sidebar-width: 172px;
+  --titlebar-height: 40px;
+}

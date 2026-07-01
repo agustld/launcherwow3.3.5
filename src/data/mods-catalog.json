@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "updated_at": "2026-06-24",
+  "mods": [
+    {
+      "id": "wdm-patch",
+      "name": "WDM Patch",
+      "category": "Mapas",
+      "description": "Parche de mapas de dungeons WDM para cliente 3.3.5a. Se instala en la carpeta de idioma del cliente (Data/<locale>/).",
+      "version": "2.4.5",
+      "file": "patch-<locale>-M.MPQ",
+      "target": "Data/<locale>",
+      "downloads": {
+        "default": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-enUS-M.MPQ",
+        "enUS": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-enUS-M.MPQ",
+        "enGB": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-enGB-M.MPQ",
+        "deDE": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-deDE-M.MPQ",
+        "frFR": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-frFR-M.MPQ",
+        "esES": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-esES-M.MPQ",
+        "esMX": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-esMX-M.MPQ",
+        "ruRU": "https://github.com/Trimitor/WDM-patch/releases/download/2.4.5-stable/patch-ruRU-M.MPQ"
+      }
+    }
+  ]
+}

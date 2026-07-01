@@ -1,0 +1,929 @@
+/**
+ * Tema clásico WoW 2009 — launcher completo.
+ * Activar/desactivar: clase `theme-classic` en `.app-shell`.
+ * Los estilos azules originales permanecen en tokens.css y demás hojas.
+ */
+
+/* ── Variables y remapeo de tokens ── */
+
+.app-shell.theme-classic {
+  --wow-gold-light: #f0d27a;
+  --wow-gold: #d4a855;
+  --wow-gold-mid: #c9a035;
+  --wow-gold-dark: #b8860b;
+  --wow-gold-deep: #7a5a12;
+  --wow-gold-shadow: #3d2a08;
+  --wow-panel-fill: linear-gradient(
+    180deg,
+    rgba(14, 16, 24, 0.94) 0%,
+    rgba(8, 10, 16, 0.96) 100%
+  );
+  --wow-panel-solid: rgba(10, 12, 18, 0.92);
+  --wow-radius: 8px;
+  --wow-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  --wow-frame-outer: linear-gradient(
+    180deg,
+    #a8adb8 0%,
+    #5a6068 42%,
+    #2a2e34 100%
+  );
+  --wow-frame-inner: rgba(160, 170, 185, 0.22);
+
+  --radius-panel: var(--wow-radius);
+  --radius-btn: var(--wow-radius);
+
+  --void: #050a12;
+  --frost-deep: #0a0e16;
+  --frost-panel: rgba(10, 12, 18, 0.92);
+  --frost-line: rgba(130, 140, 160, 0.32);
+  --frost-line-soft: rgba(90, 100, 120, 0.28);
+
+  --ice: #6fd3ff;
+  --ice-soft: #9fe2ff;
+  --ice-dim: #4a7a9a;
+  --ice-glow: rgba(111, 211, 255, 0.2);
+
+  --text-primary: #e9f0f8;
+  --text-muted: #8a96a8;
+  --border-subtle: rgba(130, 140, 160, 0.28);
+  --accent-ice: #6fd3ff;
+  --accent-deep: #0078ff;
+
+  border: 2px solid transparent;
+  border-image: linear-gradient(180deg, #6a7078 0%, #2a2e34 100%) 1;
+  border-radius: 10px;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ── Fondo global con textura ── */
+
+.app-shell.theme-classic .sidebar:not(.bottom-dock) {
+  background: rgba(4, 6, 10, 0.98);
+  border-right-color: rgba(184, 134, 11, 0.14);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.4);
+}
+
+.app-shell.theme-classic .main-column {
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(30, 45, 80, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 10% 90%, rgba(20, 14, 8, 0.35) 0%, transparent 50%),
+    linear-gradient(168deg, #080c14 0%, #060810 45%, #070a12 100%);
+}
+
+.app-shell.theme-classic .main-column::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.1;
+  background-image: var(--wow-noise);
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+}
+
+.app-shell.theme-classic .main-column::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.05;
+  background-image:
+    repeating-linear-gradient(
+      118deg,
+      transparent 0,
+      transparent 56px,
+      rgba(240, 210, 122, 0.035) 56px,
+      rgba(240, 210, 122, 0.035) 57px
+    ),
+    repeating-linear-gradient(
+      -62deg,
+      transparent 0,
+      transparent 80px,
+      rgba(0, 0, 0, 0.1) 80px,
+      rgba(0, 0, 0, 0.1) 81px
+    );
+}
+
+.app-shell.theme-classic .titlebar,
+.app-shell.theme-classic .app-views {
+  position: relative;
+  z-index: 1;
+}
+
+.app-shell.theme-classic .titlebar {
+  border-bottom-color: rgba(184, 134, 11, 0.22);
+  background: rgba(6, 8, 12, 0.97);
+}
+
+.app-shell.theme-classic .app-views {
+  background: transparent;
+}
+
+/* ── Scrollbars doradas ── */
+
+.app-shell.theme-classic,
+.app-shell.theme-classic * {
+  scrollbar-color: rgba(184, 134, 11, 0.42) transparent;
+}
+
+.app-shell.theme-classic *::-webkit-scrollbar-thumb {
+  background: rgba(184, 134, 11, 0.38);
+}
+
+.app-shell.theme-classic *::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 168, 85, 0.58);
+}
+
+/* ── Títulos tallados (todas las vistas) ── */
+
+.app-shell.theme-classic .wow-title,
+.app-shell.theme-classic .servers-title,
+.app-shell.theme-classic .addons-title,
+.app-shell.theme-classic .mods-title,
+.app-shell.theme-classic .keybinds-title,
+.app-shell.theme-classic .settings-view-title,
+.app-shell.theme-classic .server-form-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: linear-gradient(
+    180deg,
+    #ffeaa0 0%,
+    var(--wow-gold-light) 30%,
+    var(--wow-gold-dark) 78%,
+    var(--wow-gold-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 var(--wow-gold-shadow))
+    drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 14px rgba(240, 210, 122, 0.22));
+}
+
+/* ── Subtítulos de vistas ── */
+
+.app-shell.theme-classic .servers-subtitle,
+.app-shell.theme-classic .addons-subtitle,
+.app-shell.theme-classic .mods-subtitle,
+.app-shell.theme-classic .keybinds-subtitle {
+  color: #8aa8c4;
+  font-size: 0.8rem;
+  margin: 0.25rem 0 0;
+}
+
+/* ── Títulos de categoría (Addons / Mods) ── */
+
+.app-shell.theme-classic .addons-category-title,
+.app-shell.theme-classic .mods-category-title,
+.app-shell.theme-classic .servers-section-label {
+  color: var(--wow-gold-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(184, 134, 11, 0.35);
+  padding-left: calc(3px + 0.9rem);
+}
+
+/* ── Buscador de addons ── */
+
+.app-shell.theme-classic .addons-search-input {
+  border: 2px solid transparent;
+  background:
+    rgba(10, 14, 20, 0.7) padding-box,
+    linear-gradient(180deg, #6a7080 0%, #2a2e34 100%) border-box;
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .addons-search-input::placeholder {
+  color: rgba(168, 140, 80, 0.45);
+}
+
+.app-shell.theme-classic .addons-search-input:focus {
+  background:
+    rgba(10, 14, 20, 0.7) padding-box,
+    linear-gradient(180deg, var(--wow-gold-light) 0%, #7a5a10 100%) border-box;
+}
+
+/* ── Barra de locale (Addons / Mods) ── */
+
+.app-shell.theme-classic .addons-locale-label,
+.app-shell.theme-classic .mods-locale-label {
+  color: #8aa8c4;
+}
+
+.app-shell.theme-classic .addons-locale-value,
+.app-shell.theme-classic .mods-locale-value {
+  color: var(--wow-gold-light);
+}
+
+/* ── Toggle de mods (dorado cuando activo) ── */
+
+.app-shell.theme-classic .mod-item-toggle input:checked + .mod-item-toggle-ui {
+  background: rgba(184, 134, 11, 0.3);
+  border-color: rgba(212, 168, 85, 0.5);
+}
+
+.app-shell.theme-classic .mod-item-toggle input:checked + .mod-item-toggle-ui::after {
+  background: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .mod-item-toggle input:checked ~ .mod-item-toggle-label {
+  color: var(--wow-gold-light);
+}
+
+/* ── Keybinds: fila seleccionada y checkbox ── */
+
+.app-shell.theme-classic .keybinds-dest-row:hover {
+  background: rgba(184, 134, 11, 0.06);
+  border-color: rgba(184, 134, 11, 0.12);
+}
+
+.app-shell.theme-classic .keybinds-dest-row.is-selected {
+  background: rgba(184, 134, 11, 0.1);
+  border-color: rgba(212, 168, 85, 0.18);
+  border-left-color: var(--wow-gold-mid);
+}
+
+.app-shell.theme-classic .keybinds-dest-check:checked + .keybinds-check-ui {
+  background: linear-gradient(180deg, var(--wow-gold-light) 0%, var(--wow-gold-dark) 100%);
+  border-color: rgba(240, 210, 122, 0.45);
+  box-shadow: 0 0 8px rgba(184, 134, 11, 0.4);
+}
+
+.app-shell.theme-classic .keybinds-dest-row:hover .keybinds-check-ui {
+  border-color: rgba(184, 134, 11, 0.45);
+}
+
+.app-shell.theme-classic .keybinds-dest-icon {
+  border-color: rgba(184, 134, 11, 0.18);
+  color: var(--wow-gold-mid);
+}
+
+.app-shell.theme-classic .keybinds-dest-row.is-selected .keybinds-dest-icon {
+  border-color: rgba(212, 168, 85, 0.35);
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .keybinds-section--origin {
+  border-bottom-color: rgba(184, 134, 11, 0.15);
+}
+
+.app-shell.theme-classic .keybinds-actions {
+  border-top-color: rgba(184, 134, 11, 0.15);
+}
+
+.app-shell.theme-classic .keybinds-label {
+  color: var(--wow-gold-mid);
+  letter-spacing: 0.12em;
+  padding-left: calc(1px + 14px);
+}
+
+/* ── Botón danger en tema clásico ── */
+
+.app-shell.theme-classic .btn-outline--danger {
+  border: 2px solid transparent;
+  border-radius: var(--wow-radius);
+  background:
+    rgba(8, 10, 14, 0.75) padding-box,
+    linear-gradient(180deg, rgba(220, 80, 80, 0.7), rgba(160, 40, 40, 0.9)) border-box;
+  color: #f0a0a0;
+}
+
+/* ── Marco ornamentado reutilizable ── */
+
+.app-shell.theme-classic :is(
+    .servers-realmlist-panel,
+    .server-item,
+    .server-delete-panel,
+    .server-form-card,
+    .addon-item,
+    .mod-item,
+    .addons-locale-bar,
+    .mods-locale-bar,
+    .keybinds-panel,
+    .keybinds-empty,
+    .keybinds-confirm-panel,
+    .settings-update-card
+  ) {
+  position: relative;
+  border-radius: var(--wow-radius);
+  border: 3px solid transparent;
+  background:
+    var(--wow-panel-fill) padding-box,
+    linear-gradient(180deg, #a8adb8 0%, #5a6068 42%, #2a2e34 100%) border-box;
+  box-shadow:
+    inset 0 0 0 1px var(--wow-frame-inner),
+    inset 0 0 32px rgba(0, 0, 0, 0.42),
+    inset 0 2px 0 rgba(240, 210, 122, 0.07),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.35),
+    0 4px 18px rgba(0, 0, 0, 0.28);
+}
+
+.app-shell.theme-classic :is(
+    .servers-realmlist-panel,
+    .server-item,
+    .server-delete-panel,
+    .server-form-card,
+    .addon-item,
+    .mod-item,
+    .addons-locale-bar,
+    .mods-locale-bar,
+    .keybinds-panel,
+    .keybinds-empty,
+    .keybinds-confirm-panel,
+    .settings-update-card
+  )::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  pointer-events: none;
+  z-index: 0;
+  border: 1px solid rgba(140, 150, 165, 0.25);
+  background:
+    linear-gradient(135deg, rgba(200, 210, 225, 0.45) 0 2px, transparent 2px) 0 0 / 11px 11px
+      no-repeat,
+    linear-gradient(225deg, rgba(180, 190, 205, 0.35) 0 2px, transparent 2px) 100% 0 / 11px 11px
+      no-repeat,
+    linear-gradient(315deg, rgba(100, 110, 125, 0.45) 0 2px, transparent 2px) 100% 100% / 11px 11px
+      no-repeat,
+    linear-gradient(45deg, rgba(100, 110, 125, 0.45) 0 2px, transparent 2px) 0 100% / 11px 11px
+      no-repeat;
+}
+
+/* Marco principal Quick Access */
+.app-shell.theme-classic .wow-frame {
+  position: relative;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background:
+    rgba(6, 10, 18, 0.95) padding-box,
+    linear-gradient(
+      180deg,
+      rgba(180, 190, 210, 0.75) 0%,
+      rgba(90, 100, 118, 0.55) 30%,
+      rgba(44, 52, 66, 0.7) 65%,
+      rgba(20, 26, 38, 0.85) 100%
+    ) border-box;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(200, 215, 235, 0.1),
+    inset 0 0 40px rgba(0, 0, 0, 0.55),
+    inset 0 2px 0 rgba(200, 215, 240, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 0 80px rgba(0, 80, 160, 0.08);
+  overflow: hidden;
+}
+
+.app-shell.theme-classic .wow-frame::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  pointer-events: none;
+  border: 1px solid rgba(120, 130, 145, 0.2);
+  border-radius: 1px;
+}
+
+.app-shell.theme-classic .server-item--active {
+  background:
+    var(--wow-panel-fill) padding-box,
+    linear-gradient(180deg, var(--wow-gold-light) 0%, var(--wow-gold-mid) 50%, var(--wow-gold-deep) 100%) border-box;
+  box-shadow:
+    inset 0 0 0 1px rgba(240, 210, 122, 0.28),
+    inset 0 0 24px rgba(184, 134, 11, 0.08),
+    0 0 14px rgba(184, 134, 11, 0.12);
+}
+
+.app-shell.theme-classic .server-item-badge--preset {
+  background: rgba(184, 134, 11, 0.15);
+  color: var(--wow-gold-light);
+}
+
+/* ── Dock inferior (detalle visual) — base en wotlk-layout.css ── */
+
+.app-shell.theme-classic .bottom-bar .bottom-bar-options.active,
+.app-shell.theme-classic .bottom-bar #btn-settings.active {
+  color: var(--wow-gold-light);
+  border-color: rgba(240, 210, 122, 0.35);
+  box-shadow: 0 0 10px rgba(184, 134, 11, 0.2);
+}
+
+/* ── Botones (dorado metálico secundarios; PLAY en dock) ── */
+
+.app-shell.theme-classic .btn-outline {
+  border: 2px solid transparent;
+  border-radius: var(--wow-radius);
+  background:
+    rgba(8, 10, 14, 0.75) padding-box,
+    linear-gradient(180deg, var(--wow-gold-mid), var(--wow-gold-deep)) border-box;
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .btn-outline:hover {
+  background: rgba(184, 134, 11, 0.12);
+  color: #ffeaa0;
+  box-shadow: 0 0 12px rgba(184, 134, 11, 0.15);
+}
+
+.app-shell.theme-classic .btn-save-settings,
+.app-shell.theme-classic .btn-copy-keybinds,
+.app-shell.theme-classic .update-banner-install,
+.app-shell.theme-classic .settings-update-install {
+  border: 2px solid transparent;
+  border-radius: var(--wow-radius);
+  background:
+    linear-gradient(135deg, rgba(255, 235, 180, 0.18) 0%, transparent 42%) padding-box,
+    linear-gradient(180deg, #d4a855 0%, var(--wow-gold-dark) 55%, var(--wow-gold-deep) 100%) padding-box,
+    linear-gradient(180deg, #ffeaa0, var(--wow-gold-dark), var(--wow-gold-deep)) border-box;
+  color: #fff8e8;
+  text-shadow: 0 1px 2px rgba(61, 42, 8, 0.8);
+  box-shadow:
+    0 4px 16px rgba(184, 134, 11, 0.35),
+    inset 0 1px 0 rgba(255, 235, 180, 0.25);
+}
+
+.app-shell.theme-classic .btn-save-settings:hover,
+.app-shell.theme-classic .btn-copy-keybinds:hover:not(:disabled),
+.app-shell.theme-classic .update-banner-install:hover {
+  opacity: 1;
+  box-shadow:
+    0 6px 22px rgba(184, 134, 11, 0.45),
+    inset 0 1px 0 rgba(255, 235, 180, 0.32);
+}
+
+.app-shell.theme-classic .btn-browse,
+.app-shell.theme-classic .btn-copy,
+.app-shell.theme-classic .btn-globe,
+.app-shell.theme-classic .btn-settings {
+  border: 2px solid transparent;
+  border-radius: var(--wow-radius);
+  background:
+    rgba(8, 10, 14, 0.92) padding-box,
+    linear-gradient(180deg, rgba(201, 160, 53, 0.8), rgba(90, 64, 14, 0.9)) border-box;
+  color: var(--wow-gold-light);
+  transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.app-shell.theme-classic .btn-browse:hover,
+.app-shell.theme-classic .btn-copy:hover,
+.app-shell.theme-classic .btn-globe:hover,
+.app-shell.theme-classic .btn-settings:hover {
+  color: #ffeaa0;
+  background:
+    rgba(18, 14, 8, 0.97) padding-box,
+    linear-gradient(180deg, var(--wow-gold-light), var(--wow-gold-dark)) border-box;
+  box-shadow: 0 0 12px rgba(184, 134, 11, 0.2);
+}
+
+/* ── Inputs, selects, toggles ── */
+
+.app-shell.theme-classic :is(
+    .ref-select,
+    .realmlist-input,
+    .settings-input,
+    .server-form-body .settings-input
+  ) {
+  border-radius: var(--wow-radius);
+  border: 2px solid rgba(184, 134, 11, 0.55);
+  background: rgba(6, 8, 12, 0.96);
+  color: #f0e6d0;
+}
+
+.app-shell.theme-classic :is(
+    .ref-select:focus,
+    .realmlist-input:focus,
+    .settings-input:focus
+  ) {
+  border-color: var(--wow-gold-light);
+  box-shadow:
+    0 0 0 2px rgba(240, 210, 122, 0.12),
+    inset 0 0 10px rgba(184, 134, 11, 0.06);
+}
+
+.app-shell.theme-classic .settings-toggle input:checked + .settings-toggle-ui,
+.app-shell.theme-classic .mod-item-toggle input:checked + .mod-item-toggle-ui {
+  background: rgba(184, 134, 11, 0.45);
+  border-color: rgba(240, 210, 122, 0.35);
+}
+
+.app-shell.theme-classic .settings-toggle input:checked + .settings-toggle-ui::after,
+.app-shell.theme-classic .mod-item-toggle input:checked + .mod-item-toggle-ui::after {
+  background: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .mod-item-toggle input:checked ~ .mod-item-toggle-label {
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .settings-toggle-ui,
+.app-shell.theme-classic .mod-item-toggle-ui {
+  border: 1px solid rgba(184, 134, 11, 0.35);
+}
+
+.app-shell.theme-classic .addons-progress-bar,
+.app-shell.theme-classic .mods-progress-bar {
+  background: linear-gradient(90deg, var(--wow-gold-dark), var(--wow-gold-light));
+}
+
+.app-shell.theme-classic .link-muted:hover,
+.app-shell.theme-classic .link-ice:hover {
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .link-ice {
+  color: var(--wow-gold-mid);
+}
+
+/* ── Ajustes (vista completa) ── */
+
+.app-shell.theme-classic .settings-view {
+  background: transparent;
+}
+
+.app-shell.theme-classic .settings-view-title {
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .settings-view-subtitle {
+  color: #8aa8c4;
+}
+
+/* Tarjetas de settings — tema classic */
+.app-shell.theme-classic .settings-card {
+  border: 2px solid transparent;
+  background:
+    rgba(6, 8, 14, 0.95) padding-box,
+    linear-gradient(
+      180deg,
+      rgba(184, 134, 11, 0.65) 0%,
+      rgba(122, 90, 18, 0.45) 50%,
+      rgba(60, 44, 10, 0.7) 100%
+    ) border-box;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(240, 210, 122, 0.06),
+    inset 0 0 30px rgba(0, 0, 0, 0.4),
+    0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.app-shell.theme-classic .settings-card-header {
+  border-bottom-color: rgba(184, 134, 11, 0.2);
+}
+
+.app-shell.theme-classic .settings-card-icon {
+  color: var(--wow-gold-mid);
+}
+
+.app-shell.theme-classic .settings-card-title {
+  color: var(--wow-gold-mid);
+}
+
+.app-shell.theme-classic .settings-version-badge {
+  background: rgba(184, 134, 11, 0.12);
+  border-color: rgba(184, 134, 11, 0.3);
+}
+
+.app-shell.theme-classic .settings-version-label {
+  color: var(--wow-gold-deep);
+}
+
+.app-shell.theme-classic .settings-version-value {
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .settings-divider {
+  background: rgba(184, 134, 11, 0.15);
+}
+
+.app-shell.theme-classic .settings-label {
+  color: var(--wow-gold-mid);
+}
+
+.app-shell.theme-classic .settings-toggle:hover {
+  background: rgba(184, 134, 11, 0.06);
+}
+
+.app-shell.theme-classic .settings-toggle-label {
+  color: #e8d8b0;
+}
+
+.app-shell.theme-classic .settings-hint {
+  color: #6a7e94;
+}
+
+.app-shell.theme-classic .btn-check-updates {
+  border-color: rgba(184, 134, 11, 0.35);
+  background: rgba(6, 8, 12, 0.8);
+  color: var(--wow-gold-mid);
+}
+
+.app-shell.theme-classic .btn-check-updates:hover {
+  border-color: rgba(240, 210, 122, 0.55);
+  color: var(--wow-gold-light);
+  background: rgba(10, 12, 18, 0.95);
+}
+
+.app-shell.theme-classic .settings-update-card {
+  border: 2px solid transparent;
+  background:
+    rgba(6, 8, 14, 0.9) padding-box,
+    linear-gradient(180deg, rgba(140, 100, 20, 0.5), rgba(60, 44, 10, 0.7)) border-box;
+  color: #c8b880;
+  font-size: 11px;
+}
+
+.app-shell.theme-classic .settings-update-card--available {
+  background:
+    rgba(20, 14, 4, 0.92) padding-box,
+    linear-gradient(180deg, rgba(240, 210, 122, 0.6), rgba(122, 90, 18, 0.8)) border-box;
+}
+
+/* ── Updater ── */
+
+.app-shell.theme-classic .update-banner {
+  border-bottom-color: rgba(184, 134, 11, 0.2);
+  background: linear-gradient(
+    90deg,
+    rgba(184, 134, 11, 0.14) 0%,
+    rgba(122, 90, 18, 0.08) 100%
+  );
+}
+
+.app-shell.theme-classic .update-banner-text {
+  color: var(--wow-gold-light);
+}
+
+.app-shell.theme-classic .nav-update-badge {
+  background: var(--wow-gold-mid);
+  box-shadow:
+    0 0 0 2px rgba(5, 8, 14, 0.95),
+    0 0 10px rgba(240, 210, 122, 0.45);
+}
+
+/* ── Keybinds ── */
+
+.app-shell.theme-classic .keybinds-section--origin,
+.app-shell.theme-classic .keybinds-actions {
+  border-color: rgba(184, 134, 11, 0.14);
+}
+
+.app-shell.theme-classic .keybinds-dest-row:hover {
+  background: rgba(184, 134, 11, 0.08);
+  border-color: rgba(184, 134, 11, 0.12);
+}
+
+.app-shell.theme-classic .keybinds-dest-row.is-selected {
+  background: rgba(184, 134, 11, 0.14);
+  border-color: rgba(240, 210, 122, 0.2);
+  border-left-color: var(--wow-gold-light);
+  box-shadow: inset 0 0 0 1px rgba(240, 210, 122, 0.08);
+}
+
+.app-shell.theme-classic .keybinds-dest-row.is-selected .keybinds-dest-icon {
+  color: var(--wow-gold-light);
+  border-color: rgba(240, 210, 122, 0.25);
+}
+
+.app-shell.theme-classic .keybinds-dest-check:checked + .keybinds-check-ui {
+  background: linear-gradient(180deg, var(--wow-gold-light) 0%, var(--wow-gold-dark) 100%);
+  border-color: rgba(240, 210, 122, 0.4);
+  box-shadow: 0 0 10px rgba(184, 134, 11, 0.35);
+}
+
+.app-shell.theme-classic .keybinds-panel .btn-copy-keybinds {
+  border: 2px solid transparent;
+  border-radius: var(--wow-radius);
+  background:
+    linear-gradient(135deg, rgba(255, 235, 180, 0.18) 0%, transparent 42%) padding-box,
+    linear-gradient(180deg, #d4a855 0%, var(--wow-gold-dark) 55%, var(--wow-gold-deep) 100%) padding-box,
+    linear-gradient(180deg, #ffeaa0, var(--wow-gold-dark), var(--wow-gold-deep)) border-box;
+  color: #fff8e8;
+  text-shadow: 0 1px 2px rgba(61, 42, 8, 0.8);
+  box-shadow:
+    0 4px 16px rgba(184, 134, 11, 0.35),
+    inset 0 1px 0 rgba(255, 235, 180, 0.25);
+}
+
+.app-shell.theme-classic .keybinds-panel .btn-copy-keybinds:hover:not(:disabled) {
+  box-shadow:
+    0 6px 22px rgba(184, 134, 11, 0.45),
+    inset 0 1px 0 rgba(255, 235, 180, 0.32);
+}
+
+.app-shell.theme-classic .server-form-header,
+.app-shell.theme-classic .server-form-actions {
+  border-color: rgba(184, 134, 11, 0.18);
+}
+
+/* ══════════════════════════════════════════
+   INICIO — imagen Lich King + paneles héroe
+   ══════════════════════════════════════════ */
+
+.app-shell.theme-classic #view-home {
+  position: relative;
+  background-color: #050810;
+}
+
+.app-shell.theme-classic .portada-bg {
+  background-size: auto 100%;
+  background-position: right top;
+}
+
+.app-shell.theme-classic #view-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 8, 16, 0) 0%,
+    rgba(5, 8, 16, 0) 36%,
+    rgba(5, 8, 16, 0.35) 42%,
+    rgba(5, 8, 16, 0.72) 52%,
+    rgba(5, 8, 16, 0.92) 62%,
+    rgba(5, 8, 16, 0.97) 100%
+  );
+}
+
+.app-shell.theme-classic .home-layout {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell.theme-classic #view-home.app-view--active:not([hidden]) {
+  flex: 1;
+  min-height: 0;
+}
+
+.app-shell.theme-classic .portada-glow {
+  background: radial-gradient(
+    circle,
+    rgba(0, 140, 255, 0.2) 0%,
+    rgba(0, 80, 160, 0.1) 42%,
+    transparent 72%
+  );
+  animation: wow-glow-pulse 10s ease-in-out infinite;
+}
+
+.app-shell.theme-classic .hero-glow {
+  background: radial-gradient(
+    circle,
+    rgba(0, 140, 255, 0.2) 0%,
+    rgba(0, 80, 160, 0.1) 42%,
+    transparent 72%
+  );
+  animation: wow-glow-pulse 10s ease-in-out infinite;
+}
+
+/* ── Popup de contacto (tema clásico) ── */
+
+.app-shell.theme-classic .contact-popup-panel {
+  border: 2px solid transparent;
+  border-radius: var(--wow-radius);
+  background:
+    rgba(8, 10, 16, 0.98) padding-box,
+    linear-gradient(180deg, #a8adb8 0%, #5a6068 42%, #2a2e34 100%) border-box;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(160, 170, 185, 0.12);
+}
+
+.app-shell.theme-classic .contact-popup-title {
+  background: linear-gradient(180deg, #ffeaa0 0%, var(--wow-gold-light) 40%, var(--wow-gold-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 var(--wow-gold-shadow));
+}
+
+.app-shell.theme-classic .contact-discord-btn {
+  border: 2px solid rgba(88, 101, 242, 0.5);
+  border-radius: var(--wow-radius);
+}
+
+.app-shell.theme-classic .contact-popup-close:hover {
+  background: rgba(240, 210, 122, 0.08);
+  color: var(--wow-gold-light);
+}
+
+@keyframes wow-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.06);
+  }
+}
+
+.app-shell.theme-classic .hero-overlay {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(5, 8, 14, 0.35) 45%,
+    rgba(5, 8, 14, 0.65) 100%
+  );
+}
+
+.app-shell.theme-classic .hero-title {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: linear-gradient(
+    180deg,
+    #ffeaa0 0%,
+    var(--wow-gold-light) 28%,
+    var(--wow-gold-dark) 72%,
+    var(--wow-gold-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 var(--wow-gold-shadow))
+    drop-shadow(0 2px 5px rgba(0, 0, 0, 0.75))
+    drop-shadow(0 0 14px rgba(240, 210, 122, 0.22));
+}
+
+/* PLAY rúnico — barra inferior */
+.app-shell.theme-classic .bottom-bar-play-wrap .btn-play {
+  border-radius: 8px;
+  border: 2px solid transparent;
+  /* gradient border que respeta border-radius */
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(160, 220, 255, 0.5) 0%, transparent 55%) padding-box,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, transparent 42%) padding-box,
+    linear-gradient(180deg, #3db8ff 0%, #1a96ff 38%, #0074e0 58%, #003366 100%) padding-box,
+    linear-gradient(180deg, #ffeaa0 0%, var(--wow-gold-light) 22%, var(--wow-gold-mid) 52%, var(--wow-gold-deep) 100%) border-box;
+  color: #eef8ff;
+  text-shadow:
+    0 1px 0 rgba(0, 40, 90, 0.8),
+    0 0 16px rgba(120, 200, 255, 0.6);
+  box-shadow:
+    0 0 28px rgba(0, 140, 255, 0.55),
+    0 0 48px rgba(26, 150, 255, 0.28),
+    0 6px 20px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 6px rgba(0, 40, 100, 0.5),
+    inset 0 0 24px rgba(80, 180, 255, 0.25);
+}
+
+.app-shell.theme-classic .bottom-bar-play-wrap .btn-play::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 8px;
+  pointer-events: none;
+  border: 1px solid rgba(240, 210, 122, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 0 16px rgba(100, 200, 255, 0.18);
+}
+
+.app-shell.theme-classic .bottom-bar-play-wrap .btn-play:hover {
+  background:
+    radial-gradient(ellipse 85% 65% at 50% 18%, rgba(180, 235, 255, 0.6) 0%, transparent 55%) padding-box,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, transparent 44%) padding-box,
+    linear-gradient(180deg, #52c4ff 0%, #2aa3ff 36%, #0088ff 56%, #004080 100%) padding-box,
+    linear-gradient(180deg, #fff0b8 0%, var(--wow-gold-light) 24%, var(--wow-gold-mid) 54%, var(--wow-gold-deep) 100%) border-box;
+  box-shadow:
+    0 0 40px rgba(0, 160, 255, 0.72),
+    0 0 64px rgba(111, 211, 255, 0.38),
+    0 10px 28px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 0 32px rgba(120, 210, 255, 0.35);
+}
+
+.app-shell.theme-classic .bottom-bar-play-wrap .btn-play:disabled {
+  filter: grayscale(0.35) brightness(0.72);
+  box-shadow: none;
+}
+
+.app-shell.theme-classic .server-select-label {
+  color: var(--wow-gold-mid);
+  letter-spacing: 0.16em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell.theme-classic .portada-glow,
+  .app-shell.theme-classic .hero-glow {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .app-shell.theme-classic .bottom-bar-play-wrap .btn-play:hover {
+    transform: none;
+  }
+}

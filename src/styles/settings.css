@@ -1,0 +1,450 @@
+/* ── Vista de ajustes (pantalla completa) ── */
+
+.settings-view.app-view--active:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.settings-view-header {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.settings-view-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary, var(--snow));
+}
+
+.settings-view-subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted, var(--ash));
+}
+
+.settings-view-form {
+  flex: 1;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.bottom-bar-options {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.bottom-bar-options-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Formulario de ajustes ── */
+
+.settings-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  overflow: visible;
+}
+
+/* ── Tarjetas ── */
+
+.settings-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(29, 42, 60, 0.9);
+  background: linear-gradient(
+    145deg,
+    rgba(16, 26, 40, 0.92) 0%,
+    rgba(10, 17, 28, 0.88) 100%
+  );
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 1px 0 rgba(111, 211, 255, 0.04) inset,
+    0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.18s ease;
+}
+
+.settings-card:focus-within {
+  border-color: rgba(46, 90, 114, 0.7);
+}
+
+.settings-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(29, 42, 60, 0.8);
+}
+
+.settings-card-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--ice-dim);
+  flex-shrink: 0;
+}
+
+.settings-card-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+  flex: 1;
+}
+
+/* ── Version badge ── */
+
+.settings-version-badge {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(29, 42, 60, 0.7);
+  border: 1px solid rgba(29, 42, 60, 1);
+}
+
+.settings-version-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ash-dim);
+  text-transform: uppercase;
+}
+
+.settings-version-value {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ice-soft);
+}
+
+/* ── Divisor dentro de tarjeta ── */
+
+.settings-divider {
+  height: 1px;
+  background: rgba(29, 42, 60, 0.7);
+  margin: 0 -2px;
+}
+
+/* ── Campos ── */
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+.settings-row,
+.settings-locale-row {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-input {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: var(--radius-btn);
+  background: rgba(7, 11, 18, 0.8);
+  border: 1px solid rgba(29, 42, 60, 0.9);
+  color: var(--snow);
+  font-size: 12px;
+  font-family: var(--font-ui);
+  user-select: text;
+  transition: border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.settings-input:focus {
+  outline: none;
+  border-color: var(--ice-dim);
+  box-shadow: 0 0 0 2px var(--ice-glow);
+}
+
+.settings-input::placeholder {
+  color: var(--ash-dim);
+}
+
+.settings-input--select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236f7d8e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+select.settings-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236f7d8e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+.settings-hint {
+  margin: 0;
+  font-size: 10px;
+  color: var(--ash-dim);
+  line-height: 1.45;
+}
+
+.settings-hint code {
+  font-family: "Consolas", "Courier New", monospace;
+  color: var(--ash);
+}
+
+/* ── Botón Browse / Detectar ── */
+
+.btn-browse {
+  flex-shrink: 0;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(29, 42, 60, 0.9);
+  background: rgba(16, 26, 40, 0.9);
+  color: var(--ice);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.btn-browse:hover {
+  border-color: var(--ice-dim);
+  background: rgba(22, 36, 56, 1);
+  color: var(--ice-soft);
+}
+
+/* ── Botón "Buscar actualizaciones" ── */
+
+.btn-check-updates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 34px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(29, 42, 60, 0.9);
+  background: rgba(7, 11, 18, 0.6);
+  color: var(--ash);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease;
+}
+
+.btn-check-updates:hover {
+  border-color: var(--ice-dim);
+  background: rgba(16, 26, 40, 0.9);
+  color: var(--ice-soft);
+}
+
+/* ── Feedback ── */
+
+.settings-feedback {
+  min-height: 16px;
+  margin: 0;
+  font-size: 11px;
+  color: var(--ash);
+  text-align: center;
+}
+
+.settings-feedback.ok {
+  color: var(--success);
+}
+
+.settings-feedback.error {
+  color: var(--danger);
+}
+
+/* ── Botón volver al fondo ── */
+
+.settings-form .btn-back-portada {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* ── Botón guardar ── */
+
+.btn-save-settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 4px;
+  height: 40px;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(180deg, var(--play-blue-hover) 0%, var(--play-blue) 100%);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 18px rgba(0, 116, 224, 0.28);
+  transition: opacity 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-save-settings:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 22px rgba(0, 116, 224, 0.4);
+}
+
+/* ── Toggles ── */
+
+.settings-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin: 0 -10px;
+  transition: background 0.12s ease;
+}
+
+.settings-toggle:hover {
+  background: rgba(29, 42, 60, 0.35);
+}
+
+.settings-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.settings-toggle-ui {
+  flex-shrink: 0;
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(29, 42, 60, 0.9);
+  border: 1px solid rgba(29, 42, 60, 1);
+  position: relative;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.settings-toggle-ui::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ash-dim);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.settings-toggle input:checked + .settings-toggle-ui {
+  background: rgba(0, 116, 224, 0.5);
+  border-color: rgba(0, 116, 224, 0.7);
+}
+
+.settings-toggle input:checked + .settings-toggle-ui::after {
+  transform: translateX(16px);
+  background: #fff;
+}
+
+.settings-toggle input:focus-visible + .settings-toggle-ui {
+  outline: 1px solid var(--ice-dim);
+  outline-offset: 2px;
+}
+
+.settings-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.settings-toggle-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--snow);
+}
+
+.settings-toggle-hint {
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--ash-dim);
+}
+
+/* ── Update card ── */
+
+.settings-update-card {
+  padding: 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(29, 42, 60, 0.8);
+  background: rgba(7, 11, 18, 0.55);
+}
+
+.settings-update-card[hidden] {
+  display: none !important;
+}
+
+.settings-update-card--available {
+  border-color: rgba(111, 211, 255, 0.22);
+  background: rgba(0, 116, 224, 0.08);
+}
+
+.settings-update-card-title {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--snow);
+  line-height: 1.4;
+}
+
+.settings-update-card--current .settings-update-card-title {
+  font-weight: 500;
+  color: var(--ash);
+}
+
+.settings-update-notes {
+  margin: 0 0 10px;
+  max-height: 100px;
+  overflow-y: auto;
+  padding: 8px 10px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(29, 42, 60, 0.8);
+  background: rgba(7, 11, 18, 0.65);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--ash);
+  white-space: pre-wrap;
+}
+
+.settings-update-install {
+  width: 100%;
+  margin-top: 0;
+  height: 34px;
+}

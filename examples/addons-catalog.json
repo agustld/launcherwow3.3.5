@@ -1,0 +1,43 @@
+[
+  {
+    "id": "questie",
+    "name": "Questie",
+    "category": "Quests",
+    "description": "Rastreador de misiones para 3.3.5a con iconos en el mapa y seguimiento automático.",
+    "version": "7.3.1",
+    "folders": ["Questie"],
+    "downloads": {
+      "default": "https://github.com/Questie/Questie/releases/download/v7.3.1/Questie-v7.3.1.zip",
+      "esES": "https://github.com/Questie/Questie/releases/download/v7.3.1/Questie-v7.3.1-esES.zip"
+    }
+  },
+  {
+    "id": "details",
+    "name": "Details! Damage Meter",
+    "category": "Combat",
+    "description": "Medidor de daño/healing en tiempo real. Versión compatible con WotLK 3.3.5a.",
+    "version": "3.4.0",
+    "folders": [
+      "Details",
+      "Details_Compare2",
+      "Details_EncounterDetails",
+      "Details_RaidCheck",
+      "Details_DataStorage"
+    ],
+    "downloads": {
+      "default": "https://example.com/addons/details-335.zip"
+    }
+  },
+  {
+    "id": "atlasloot",
+    "name": "AtlasLoot",
+    "category": "Database",
+    "description": "Consultá botín de mazmorras, raids y PvP sin salir del juego.",
+    "version": "5.11.04",
+    "folders": ["AtlasLoot", "AtlasLoot_Cache", "AtlasLootFu"],
+    "downloads": {
+      "default": "https://example.com/addons/atlasloot-335.zip",
+      "esES": "https://example.com/addons/atlasloot-335-esES.zip"
+    }
+  }
+]

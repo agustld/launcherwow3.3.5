@@ -1,0 +1,26 @@
+[
+  {
+    "id": "preset-warmane",
+    "name": "Warmane",
+    "realmlist": "logon.warmane.com",
+    "description": "",
+    "gamePath": null,
+    "preset": true
+  },
+  {
+    "id": "preset-ultimowow",
+    "name": "UltimoWoW",
+    "realmlist": "logon.ultimowow.com",
+    "description": "",
+    "gamePath": null,
+    "preset": true
+  },
+  {
+    "id": "preset-naerzone",
+    "name": "Naerzone",
+    "realmlist": "comunidad.naerzone.com",
+    "description": "",
+    "gamePath": null,
+    "preset": true
+  }
+]

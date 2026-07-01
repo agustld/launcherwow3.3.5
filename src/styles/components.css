@@ -1,0 +1,203 @@
+/* ── Botón JUGAR ── */
+
+.btn-play {
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+  height: 48px;
+  padding: 0 36px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(100, 180, 255, 0.28);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.13) 0%, transparent 45%),
+    linear-gradient(180deg, #1a96ff 0%, #0074e0 55%, #0058b8 100%);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-shadow: 0 1px 4px rgba(0, 30, 80, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.25),
+    0 4px 20px rgba(0, 116, 224, 0.45),
+    0 0 40px rgba(0, 116, 224, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 30, 80, 0.3);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.btn-play::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 60%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn-play:hover {
+  transform: translateY(-2px);
+  border-color: rgba(159, 226, 255, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.2),
+    0 8px 28px rgba(0, 116, 224, 0.6),
+    0 0 60px rgba(0, 140, 255, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 30, 80, 0.2);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.17) 0%, transparent 45%),
+    linear-gradient(180deg, #2aa8ff 0%, #0088ff 52%, #0068c8 100%);
+}
+
+.btn-play:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 10px rgba(0, 116, 224, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 2px 6px rgba(0, 30, 80, 0.3);
+}
+
+.btn-play:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  filter: saturate(0.6);
+}
+
+/* ── Línea de estado del lanzamiento ── */
+
+.launch-status-line {
+  min-height: 16px;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ash);
+  transition: color 0.15s ease;
+}
+
+.launch-status-line.pending {
+  color: var(--ice);
+}
+
+.launch-status-line.ok {
+  color: var(--success);
+}
+
+.launch-status-line.error {
+  color: var(--danger);
+}
+
+/* ── Ajustes ── */
+
+.btn-settings {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-btn);
+  background: rgba(16, 26, 40, 0.85);
+  border: 1px solid var(--frost-line);
+  color: var(--ash);
+  transition:
+    color 0.12s ease,
+    border-color 0.12s ease,
+    background 0.12s ease;
+}
+
+.btn-settings:hover {
+  color: var(--snow);
+  border-color: var(--ice-dim);
+  background: rgba(16, 26, 40, 1);
+}
+
+/* ── Realmlist ── */
+
+.realmlist-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.realmlist-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+.realmlist-row {
+  display: flex;
+  gap: 6px;
+}
+
+.realmlist-input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: var(--radius-btn);
+  background: rgba(7, 11, 18, 0.75);
+  border: 1px solid var(--frost-line);
+  color: var(--ice-soft);
+  font-size: 11px;
+  font-family: "Consolas", "Courier New", monospace;
+  user-select: text;
+}
+
+.realmlist-input:focus {
+  outline: none;
+  border-color: var(--ice-dim);
+  box-shadow: 0 0 0 2px var(--ice-glow);
+}
+
+.btn-copy {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-btn);
+  background: rgba(16, 26, 40, 0.85);
+  border: 1px solid var(--frost-line);
+  color: var(--ash);
+  transition:
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.btn-copy:hover {
+  color: var(--ice);
+  border-color: var(--ice-dim);
+}
+
+.realmlist-hint {
+  min-height: 14px;
+  font-size: 10px;
+  color: var(--success);
+}
+
+/* ── Botón outline (banner) ── */
+
+.btn-outline {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--ice-dim);
+  color: var(--ice);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    background 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(111, 211, 255, 0.08);
+  border-color: var(--ice);
+}

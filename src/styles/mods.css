@@ -1,0 +1,244 @@
+.mods-view.app-view--active:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.mods-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.mods-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--snow);
+}
+
+.mods-subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ash);
+}
+
+.mods-warning {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(212, 168, 85, 0.35);
+  border-radius: var(--radius-panel);
+  background: rgba(212, 168, 85, 0.08);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #e8c878;
+}
+
+.mods-locale-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--frost-line);
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mods-locale-label {
+  font-size: 0.82rem;
+  color: var(--ash);
+}
+
+.mods-locale-value {
+  font-size: 0.9rem;
+  color: var(--ice-soft);
+}
+
+.mods-locale-hint {
+  font-size: 0.78rem;
+  color: var(--ash);
+}
+
+.mods-feedback {
+  min-height: 1.2rem;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ash);
+}
+
+.mods-feedback.error {
+  color: var(--danger);
+}
+
+.mods-feedback.info {
+  color: var(--ice-soft);
+}
+
+.mods-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mods-progress-bar {
+  height: 4px;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--play-blue), var(--play-blue-hover));
+  transition: width 0.2s ease;
+}
+
+.mods-progress-text {
+  font-size: 0.75rem;
+  color: var(--ash);
+}
+
+.mods-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mods-category-title {
+  margin: 0 0 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+.mods-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.mod-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--frost-line);
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mod-item-body {
+  min-width: 0;
+}
+
+.mod-item-name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--snow);
+}
+
+.mod-item-desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ash);
+  line-height: 1.4;
+}
+
+.mod-item-meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  color: var(--ash-dim);
+  font-family: ui-monospace, monospace;
+}
+
+.mod-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.mod-item-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mod-item-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mod-item-toggle-ui {
+  width: 34px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(29, 42, 60, 0.95);
+  border: 1px solid var(--frost-line);
+  position: relative;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.mod-item-toggle-ui::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ash);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.mod-item-toggle input:checked + .mod-item-toggle-ui {
+  background: rgba(0, 116, 224, 0.35);
+  border-color: rgba(111, 211, 255, 0.35);
+}
+
+.mod-item-toggle input:checked + .mod-item-toggle-ui::after {
+  transform: translateX(16px);
+  background: var(--ice-soft);
+}
+
+.mod-item-toggle-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ash);
+  min-width: 4.5rem;
+}
+
+.mod-item-toggle input:checked ~ .mod-item-toggle-label {
+  color: var(--ice-soft);
+}
+
+.mods-loading,
+.mods-empty {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ash);
+}
+
+.btn-outline--danger {
+  border-color: rgba(220, 80, 80, 0.45);
+  color: #f0a0a0;
+}
+
+.btn-outline--danger:hover:not(:disabled) {
+  border-color: rgba(220, 80, 80, 0.7);
+  background: rgba(220, 80, 80, 0.1);
+  color: #ffc0c0;
+}

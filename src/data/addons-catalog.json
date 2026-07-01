@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "updated_at": "2026-06-24",
+  "addons": [
+    {
+      "id": "questie",
+      "name": "Questie",
+      "category": "Quests",
+      "description": "Rastreador de misiones para 3.3.5a con iconos en el mapa y seguimiento automático.",
+      "version": "335",
+      "auto_folders": true,
+      "folders": ["Questie"],
+      "downloads": {
+        "default": "https://api.naerzone.fr/descargas/addons/Misionesyniveles/Questie.zip"
+      }
+    },
+    {
+      "id": "carbonite",
+      "name": "Carbonite",
+      "category": "Quests",
+      "description": "Mapa avanzado con rastreador de misiones, navegación y base de datos de zonas.",
+      "version": "1.0.0",
+      "folders": ["Carbonite"],
+      "downloads": {
+        "default": "https://legacy-wow.com/uploads/addons/wotlk/Carbonite-3.340.zip",
+        "esES": "https://foro.ultimowow.com/files/file/93-carbonite/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321",
+        "esMX": "https://foro.ultimowow.com/files/file/93-carbonite/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321"
+      }
+    },
+    {
+      "id": "dbm",
+      "name": "Deadly Boss Mods (DBM)",
+      "category": "Combat",
+      "description": "Alertas y timers para jefes de mazmorras y raids. Versión de Zidras para 3.3.5a.",
+      "version": "main",
+      "strip_zip_root": true,
+      "auto_folders": true,
+      "folders": ["DBM-Core"],
+      "downloads": {
+        "default": "https://codeload.github.com/Zidras/DBM-Warmane/zip/refs/heads/main"
+      }
+    },
+    {
+      "id": "gearscore",
+      "name": "GearScore",
+      "category": "Combat",
+      "description": "Muestra el GearScore de jugadores para evaluar su equipamiento rápidamente.",
+      "version": "1.0.0",
+      "auto_folders": true,
+      "folders": ["GearScore"],
+      "downloads": {
+        "default": "https://legacy-wow.com/uploads/addons/wotlk/GearScore.zip",
+        "esES": "https://foro.ultimowow.com/files/file/204-gearscore/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321",
+        "esMX": "https://foro.ultimowow.com/files/file/204-gearscore/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321"
+      }
+    },
+    {
+      "id": "recount",
+      "name": "Recount",
+      "category": "Combat",
+      "description": "Medidor de daño y sanación en tiempo real.",
+      "version": "1.0.0",
+      "folders": ["Recount"],
+      "downloads": {
+        "default": "https://legacy-wow.com/uploads/addons/wotlk/Recount-3.3.5.zip",
+        "esES": "https://foro.ultimowow.com/files/file/478-recount/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321",
+        "esMX": "https://foro.ultimowow.com/files/file/478-recount/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321"
+      }
+    },
+    {
+      "id": "details",
+      "name": "Details! Damage Meter",
+      "category": "Combat",
+      "description": "Medidor de daño/healing en tiempo real. Versión compatible con WotLK 3.3.5a.",
+      "version": "master",
+      "strip_zip_root": true,
+      "auto_folders": true,
+      "folders": ["Details"],
+      "downloads": {
+        "default": "https://github.com/Bunny67/Details-WotLK/archive/refs/heads/master.zip"
+      }
+    },
+    {
+      "id": "atlasloot",
+      "name": "AtlasLoot",
+      "category": "Database",
+      "description": "Consultá botín de mazmorras, raids y PvP sin salir del juego.",
+      "version": "5.11.04",
+      "auto_folders": true,
+      "folders": ["AtlasLoot"],
+      "downloads": {
+        "default": "https://legacy-wow.com/uploads/addons/wotlk/AtlasLoot-3.3.5.zip",
+        "esES": "https://foro.ultimowow.com/files/file/29-atlasloot-enhanced/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321",
+        "esMX": "https://foro.ultimowow.com/files/file/29-atlasloot-enhanced/?do=download&csrfKey=bca69542f1062914aaae75fca51e2321"
+      }
+    }
+  ]
+}
